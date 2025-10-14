@@ -30,7 +30,7 @@ const StarField = (props: any) => {
       >
         <PointMaterial
           transparent
-          color="#fff"
+          color="#DE547D"
           size={0.005}
           sizeAttenuation={true}
           depthWrite={false}

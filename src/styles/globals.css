@@ -1,0 +1,43 @@
+:root {
+  /* Light theme colors */
+  --background: #f9fafb;
+  --foreground: #171717;
+  --lightgrey: #e5e7eb;
+  --primary: #de547d;
+  --primary-100: #d64974;
+  --primary-200: #c8465e;
+  --secondary: #710146;
+  --secondary-100: #5d073b;
+  --text-dark: #1c1c1e;
+  --text-muted: #66758a;
+  --success: #16a34a;
+  --error: #dc2626;
+  --warning: #facc15;
+  --white: #ffffff;
+}
+
+.dark {
+  /* Dark theme colors - improved dark theme */
+  --background: #0f172a; /* Deep blue-gray */
+  --foreground: #f1f5f9; /* Light gray */
+  --lightgrey: #334155; /* Medium gray */
+  --primary: #f472b6; /* Lighter pink for better contrast */
+  --primary-100: #ec4899; /* Slightly darker pink */
+  --primary-200: #db2777; /* Even darker pink */
+  --secondary: #a855f7; /* Purple instead of dark red */
+  --secondary-100: #9333ea; /* Darker purple */
+  --text-dark: #f1f5f9; /* Light gray text */
+  --text-muted: #94a3b8; /* Muted blue-gray */
+  --success: #4ade80; /* Lighter green */
+  --error: #f87171; /* Lighter red */
+  --warning: #fbbf24; /* Amber */
+  --white: #ffffff;
+}
+
+body {
+  background: var(--background);
+  color: var(--text-dark);
+  font-family: "DM Sans", sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme changes */
+}

@@ -27,7 +27,7 @@ const TestimonialsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-background text-text-dark dark:bg-gray-900 dark:text-white">
       <Header />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 pt-24">
         <div className="text-center mb-16">
@@ -44,7 +44,7 @@ const TestimonialsPage = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"
             >
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold">
