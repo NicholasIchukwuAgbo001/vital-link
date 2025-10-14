@@ -1,4 +1,5 @@
 import React from "react";
+import ThreeBackground from "./ThreeBackground";
 
 interface HeroSectionProps {
   onAccessPortal: () => void;
@@ -6,8 +7,9 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ onAccessPortal }) => {
   return (
-    <section className="h-screen flex items-center py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto w-full">
+    <section className="h-screen flex items-center py-9 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <ThreeBackground />
+      <div className="max-w-7xl mx-auto w-full relative z-10">
         <div className="text-center">
           <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-6">
             Secure Digital Registration of{" "}
