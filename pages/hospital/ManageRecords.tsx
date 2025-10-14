@@ -18,7 +18,6 @@ const ManageRecords = () => {
     deleteRecord,
   } = useDataStore();
 
-  // Filter records for the current hospital
   const hospitalRecords = allRecords
     .filter((r) => r.hospitalId === user?.hospitalId)
     .sort(
@@ -74,7 +73,6 @@ const ManageRecords = () => {
     }
   };
 
-  // Function to add a test record
   const addTestRecord = () => {
     if (!user?.hospitalId) {
       toast.error("User not properly authenticated");
@@ -83,7 +81,7 @@ const ManageRecords = () => {
 
     const testRecord = {
       fullName: "John Doe",
-      date: new Date().toISOString().split("T")[0], // Today's date
+      date: new Date().toISOString().split("T")[0],
       gender: "Male" as const,
       parentOrNextOfKin: "Jane Doe",
       address: "123 Main St, City",

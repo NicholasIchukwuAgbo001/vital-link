@@ -21,7 +21,7 @@ interface DataState {
 const getInitialState = <T>(key: string, defaultValue: T): T => {
   try {
     const item = localStorage.getItem(key);
-    console.log(`Loading ${key} from localStorage:`, item); // Debug log
+    console.log(`Loading ${key} from localStorage:`, item);
     return item ? JSON.parse(item) : defaultValue;
   } catch (error) {
     console.error(`Error reading ${key} from localStorage`, error);
@@ -67,7 +67,6 @@ export const useDataStore = create<DataState>((set, get) => ({
       const updatedHospitals = state.hospitals.filter(
         (h) => h.id !== hospitalId
       );
-      // Also delete records associated with this hospital
       const updatedRecords = state.records.filter(
         (r) => r.hospitalId !== hospitalId
       );
@@ -100,11 +99,11 @@ export const useDataStore = create<DataState>((set, get) => ({
       certificateId: generateCertificateId(recordData.recordType),
       createdAt: new Date().toISOString(),
     };
-    console.log("Adding new record:", newRecord); // Debug log
+    console.log("Adding new record:", newRecord);
     set((state) => {
       const updatedRecords = [...state.records, newRecord];
       localStorage.setItem("vitalLinkRecords", JSON.stringify(updatedRecords));
-      console.log("Updated records in localStorage:", updatedRecords); // Debug log
+      console.log("Updated records in localStorage:", updatedRecords);
       return { records: updatedRecords };
     });
     return newRecord;

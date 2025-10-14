@@ -72,7 +72,6 @@ const ManageHospitals = () => {
     }
   };
 
-  // Separate hospitals into approved and pending
   const approvedHospitals = hospitals.filter((h) => h.password);
   const pendingHospitals = hospitals.filter((h) => !h.password);
 
@@ -91,7 +90,6 @@ const ManageHospitals = () => {
         </p>
       </div>
 
-      {/* Approved Hospitals */}
       <HospitalTable
         hospitals={approvedHospitals}
         title="Approved Hospitals"
@@ -101,7 +99,6 @@ const ManageHospitals = () => {
         emptyMessage="No approved hospitals found."
       />
 
-      {/* Pending Hospitals */}
       <HospitalTable
         hospitals={pendingHospitals}
         title="Pending Hospitals"
