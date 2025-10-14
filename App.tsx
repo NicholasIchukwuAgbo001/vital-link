@@ -15,7 +15,6 @@ import HospitalDashboard from "./pages/hospital/HospitalDashboard";
 import ManageRecords from "./pages/hospital/ManageRecords";
 import { UserRole } from "./types";
 
-// Import new pages
 import FeaturesPage from "./pages/FeaturesPage";
 import HowItWorksPage from "./pages/HowItWorksPage";
 import BenefitsPage from "./pages/BenefitsPage";
@@ -29,7 +28,6 @@ function App() {
       <HashRouter>
         <AuthModalProvider>
           <Routes>
-            {/* Public Routes */}
             <Route path="/" element={<Landing />} />
             <Route path="/features" element={<FeaturesPage />} />
             <Route path="/how-it-works" element={<HowItWorksPage />} />
@@ -41,7 +39,6 @@ function App() {
               element={<VerificationPage />}
             />
 
-            {/* Admin Routes */}
             <Route
               path="/admin"
               element={
@@ -56,7 +53,6 @@ function App() {
               <Route index element={<Navigate to="dashboard" replace />} />
             </Route>
 
-            {/* Hospital Routes */}
             <Route
               path="/hospital"
               element={
