@@ -113,6 +113,28 @@ const FeaturesPage = () => {
         "Admin portal for government authorities to oversee all registered hospitals and vital records in one place.",
       bgColor: "bg-red-100 dark:bg-red-900",
     },
+    {
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6 text-indigo-600 dark:text-indigo-300"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+          />
+        </svg>
+      ),
+      title: "Mobile Access",
+      description:
+        "Access and manage vital records on-the-go with our responsive mobile interface for healthcare professionals.",
+      bgColor: "bg-indigo-100 dark:bg-indigo-900",
+    },
   ];
 
   return (
@@ -133,7 +155,7 @@ const FeaturesPage = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-gray-700 rounded-lg p-6 hover:shadow-xl transition-shadow"
+              className="bg-white dark:bg-gray-700 rounded-lg p-6 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
             >
               <div className="flex items-center mb-4">
                 <div className={`p-3 rounded-full ${feature.bgColor}`}>
