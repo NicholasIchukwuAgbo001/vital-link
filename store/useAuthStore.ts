@@ -30,7 +30,6 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   },
 
   login: async (email, password) => {
-    // Admin login
     if (email === ADMIN_USER.email && password === ADMIN_USER.password) {
       const adminUser: User = {
         id: "admin-user",
@@ -42,11 +41,9 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       return adminUser;
     }
 
-    // Hospital login - only hospitals created by admin can log in
     const { hospitals } = useDataStore.getState();
     const hospital = hospitals.find((h) => h.email === email);
 
-    // Check if hospital exists and was created by admin (has a password)
     if (hospital && hospital.password && hospital.password === password) {
       const hospitalUser: User = {
         id: `hospital-user-${hospital.id}`,
@@ -68,5 +65,4 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   },
 }));
 
-// Initialize auth state from localStorage on app load
 useAuthStore.getState().initialize();

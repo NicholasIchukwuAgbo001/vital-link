@@ -1,14 +1,13 @@
-
 export enum UserRole {
-  ADMIN = 'ADMIN',
-  HOSPITAL = 'HOSPITAL',
+  ADMIN = "ADMIN",
+  HOSPITAL = "HOSPITAL",
 }
 
 export interface User {
   id: string;
   email: string;
   role: UserRole;
-  hospitalId?: string; 
+  hospitalId?: string;
 }
 
 export interface Hospital {
@@ -21,8 +20,8 @@ export interface Hospital {
 }
 
 export enum RecordType {
-  BIRTH = 'BIRTH',
-  DEATH = 'DEATH',
+  BIRTH = "BIRTH",
+  DEATH = "DEATH",
 }
 
 export interface RecordData {
@@ -30,10 +29,10 @@ export interface RecordData {
   certificateId: string;
   hospitalId: string;
   fullName: string;
-  date: string; // YYYY-MM-DD format
-  gender: 'Male' | 'Female';
+  date: string;
+  gender: "Male" | "Female";
   parentOrNextOfKin: string;
   address: string;
   recordType: RecordType;
-  createdAt: string; // ISO string
+  createdAt: string;
 }

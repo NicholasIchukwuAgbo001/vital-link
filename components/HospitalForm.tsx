@@ -8,7 +8,7 @@ interface HospitalFormProps {
   onUpdate: (hospital: Hospital) => void;
   initialData?: Hospital | null;
   isEditing: boolean;
-  isApproval?: boolean; // New prop for approval mode
+  isApproval?: boolean;
 }
 
 const HospitalForm: React.FC<HospitalFormProps> = ({
@@ -48,13 +48,11 @@ const HospitalForm: React.FC<HospitalFormProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // For approval mode, password is required
     if (isApproval && !hospital.password) {
       alert("Password is required for approval");
       return;
     }
 
-    // For regular creation, password is required
     if (!isEditing && !isApproval && !hospital.password) {
       alert("Password is required when creating a new hospital");
       return;
