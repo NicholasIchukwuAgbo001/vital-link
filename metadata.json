@@ -1,0 +1,5 @@
+{
+  "name": "VitalLink",
+  "description": "A secure, digital platform to record and verify birth and death registrations. This frontend-only application uses localStorage for data persistence and provides role-based access for Admins and Hospitals.",
+  "requestFramePermissions": []
+}
