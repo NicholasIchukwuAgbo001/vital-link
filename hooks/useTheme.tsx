@@ -24,10 +24,9 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
       if (savedTheme === "light" || savedTheme === "dark") {
         return savedTheme;
       }
-      // Use dark theme as default instead of system preference
       return "dark";
     }
-    return "dark"; // Default to dark theme
+    return "dark";
   });
 
   useEffect(() => {

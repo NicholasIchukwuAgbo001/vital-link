@@ -28,7 +28,6 @@ const LoginModal: React.FC<LoginModalProps> = ({
       await login(email, password);
       toast.success("Login successful!");
       onLoginSuccess();
-      // Reset form
       setEmail("");
       setPassword("");
     } catch (error) {

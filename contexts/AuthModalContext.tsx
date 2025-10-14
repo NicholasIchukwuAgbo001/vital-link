@@ -27,7 +27,6 @@ export const AuthModalProvider: React.FC<{ children: ReactNode }> = ({
   const handleLoginSuccess = () => {
     closeLoginModal();
 
-    // Get the updated user state after login
     const currentUser = useAuthStore.getState().user;
 
     if (currentUser?.role === UserRole.ADMIN) {

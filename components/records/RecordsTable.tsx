@@ -31,7 +31,6 @@ const RecordsTable: React.FC<RecordsTableProps> = ({
   emptyMessage = "No records found.",
   showActions = true,
 }) => {
-  // If we have custom empty state handlers, show the custom empty state
   if (isEmpty && onAddTestRecord && onRegisterNewRecord) {
     return (
       <Card>

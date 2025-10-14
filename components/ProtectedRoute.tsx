@@ -15,10 +15,8 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, role }) => {
   const location = useLocation();
 
   if (!isAuthenticated) {
-    // Show the login modal
     openLoginModal();
 
-    // Show a placeholder while the modal is open
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
         <div className="text-center">
