@@ -8,7 +8,7 @@ const Landing = () => {
   const { openLoginModal } = useAuthModal();
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-background text-text-dark dark:bg-gray-900 dark:text-white pt-24">
+    <div className="min-h-screen relative overflow-hidden bg-background text-text-dark dark:bg-gray-900 dark:text-white">
       <div className="relative z-0">
         <Header />
         <HeroSection onAccessPortal={openLoginModal} />

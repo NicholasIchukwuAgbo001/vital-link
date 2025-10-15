@@ -13,14 +13,19 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onAccessPortal }) => {
   };
 
   return (
-    <section className="flex items-center py-5 px-4 sm:px-6 lg:px-8 relative z-0 sm:mt-0">
+    <section
+      className="flex items-center justify-center min-h-screen py-5 px-4 sm:px-6 lg:px-8 relative z-0 mt-0 pt-20"
+      style={{ backgroundImage: "url('/hero-img.jpg')" }}
+    >
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+
       <div className="max-w-7xl mx-auto w-full relative z-10">
         <div className="text-center">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-6">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">
             Secure Digital Registration of{" "}
             <span className="text-primary">Life Events</span>
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-6">
+          <p className="text-xl text-white max-w-3xl mx-auto mb-6">
             VitalLink provides a secure, efficient, and tamper-proof system for
             registering birth and death certificates. Streamline your hospital's
             documentation process while ensuring data integrity and compliance.
