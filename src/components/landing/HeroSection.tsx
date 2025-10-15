@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import ThreeBackground from "./ThreeBackground.tsx";
 
 interface HeroSectionProps {
   onAccessPortal: () => void;
@@ -15,7 +14,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onAccessPortal }) => {
 
   return (
     <section className="flex items-center py-5 px-4 sm:px-6 lg:px-8 relative z-0 sm:mt-0">
-      <ThreeBackground />
       <div className="max-w-7xl mx-auto w-full relative z-10">
         <div className="text-center">
           <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 dark:text-white mb-6">
