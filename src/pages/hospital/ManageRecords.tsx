@@ -73,33 +73,11 @@ const ManageRecords = () => {
     }
   };
 
-  const addTestRecord = () => {
-    if (!user?.hospitalId) {
-      toast.error("User not properly authenticated");
-      return;
-    }
-
-    const testRecord = {
-      fullName: "John Doe",
-      date: new Date().toISOString().split("T")[0],
-      gender: "Male" as const,
-      parentOrNextOfKin: "Jane Doe",
-      address: "123 Main St, City",
-      recordType: RecordType.BIRTH,
-    };
-
-    addRecord({ ...testRecord, hospitalId: user.hospitalId });
-    toast.success("Test record added successfully!");
-  };
-
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Manage Records</h1>
         <div className="flex space-x-2">
-          <Button onClick={addTestRecord} variant="secondary">
-            Add Test Record
-          </Button>
           <Button onClick={openModalForCreate}>Register New Record</Button>
         </div>
       </div>
@@ -109,7 +87,6 @@ const ManageRecords = () => {
         onEdit={openModalForEdit}
         onDelete={handleDelete}
         onQR={openQRModal}
-        onAddTestRecord={addTestRecord}
         onRegisterNewRecord={openModalForCreate}
         isEmpty={hospitalRecords.length === 0}
       />

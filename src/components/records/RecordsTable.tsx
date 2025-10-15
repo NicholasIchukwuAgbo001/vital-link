@@ -11,7 +11,6 @@ interface RecordsTableProps {
   onEdit?: (record: RecordData) => void;
   onDelete?: (recordId: string) => void;
   onQR?: (certificateId: string) => void;
-  onAddTestRecord?: () => void;
   onRegisterNewRecord?: () => void;
   isEmpty?: boolean;
   emptyMessage?: string;
@@ -25,19 +24,15 @@ const RecordsTable: React.FC<RecordsTableProps> = ({
   onEdit,
   onDelete,
   onQR,
-  onAddTestRecord,
   onRegisterNewRecord,
   isEmpty = false,
   emptyMessage = "No records found.",
   showActions = true,
 }) => {
-  if (isEmpty && onAddTestRecord && onRegisterNewRecord) {
+  if (isEmpty && onRegisterNewRecord) {
     return (
       <Card>
-        <EmptyRecordsState
-          onAddTestRecord={onAddTestRecord}
-          onRegisterNewRecord={onRegisterNewRecord}
-        />
+        <EmptyRecordsState onRegisterNewRecord={onRegisterNewRecord} />
       </Card>
     );
   }
@@ -134,7 +129,7 @@ const RecordsTable: React.FC<RecordsTableProps> = ({
                 )}
               </tr>
             ))}
-            {isEmpty && !onAddTestRecord && !onRegisterNewRecord && (
+            {isEmpty && !onRegisterNewRecord && (
               <tr>
                 <td
                   colSpan={

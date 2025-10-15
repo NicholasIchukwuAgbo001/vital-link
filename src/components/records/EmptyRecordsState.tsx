@@ -2,12 +2,10 @@ import React from "react";
 import Button from "../ui/Button.tsx";
 
 interface EmptyRecordsStateProps {
-  onAddTestRecord: () => void;
   onRegisterNewRecord: () => void;
 }
 
 const EmptyRecordsState: React.FC<EmptyRecordsStateProps> = ({
-  onAddTestRecord,
   onRegisterNewRecord,
 }) => {
   return (
@@ -36,9 +34,6 @@ const EmptyRecordsState: React.FC<EmptyRecordsStateProps> = ({
           Get started by creating a new record.
         </p>
         <div className="flex gap-2">
-          <Button onClick={onAddTestRecord} variant="secondary">
-            Add Test Record
-          </Button>
           <Button onClick={onRegisterNewRecord}>Register New Record</Button>
         </div>
       </div>
