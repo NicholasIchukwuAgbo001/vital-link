@@ -84,11 +84,10 @@ const ManageRecords = () => {
 
       <RecordsTable
         records={hospitalRecords}
-        onEdit={openModalForEdit}
-        onDelete={handleDelete}
         onQR={openQRModal}
         onRegisterNewRecord={openModalForCreate}
         isEmpty={hospitalRecords.length === 0}
+        showActions={true}
       />
 
       <Modal

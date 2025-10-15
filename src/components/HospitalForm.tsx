@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import toast from "react-hot-toast";
 import { Hospital } from "../../types.ts";
 import Input from "./ui/Input.tsx";
 import Button from "./ui/Button.tsx";
@@ -45,16 +46,65 @@ const HospitalForm: React.FC<HospitalFormProps> = ({
     setHospital((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const validateForm = () => {
+    // Check required fields
+    if (!hospital.name.trim()) {
+      toast.error("Hospital name is required");
+      return false;
+    }
 
+    if (!hospital.location.trim()) {
+      toast.error("Location is required");
+      return false;
+    }
+
+    if (!hospital.phone.trim()) {
+      toast.error("Phone number is required");
+      return false;
+    }
+
+    // Email validation
+    if (!hospital.email.trim()) {
+      toast.error("Email is required");
+      return false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(hospital.email)) {
+      toast.error("Please enter a valid email address");
+      return false;
+    }
+
+    // Phone validation (simple validation)
+    const phoneRegex = /^[0-9+\-\s()]+$/;
+    if (!phoneRegex.test(hospital.phone)) {
+      toast.error("Please enter a valid phone number");
+      return false;
+    }
+
+    // Password validation
     if (isApproval && !hospital.password) {
-      alert("Password is required for approval");
-      return;
+      toast.error("Password is required for approval");
+      return false;
     }
 
     if (!isEditing && !isApproval && !hospital.password) {
-      alert("Password is required when creating a new hospital");
+      toast.error("Password is required when creating a new hospital");
+      return false;
+    }
+
+    if (hospital.password && hospital.password.length < 6) {
+      toast.error("Password must be at least 6 characters long");
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!validateForm()) {
       return;
     }
 

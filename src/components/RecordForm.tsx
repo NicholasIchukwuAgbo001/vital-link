@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import toast from "react-hot-toast";
 import { RecordData, RecordType } from "../../types.ts";
 import Input from "./ui/Input.tsx";
 import Select from "./ui/Select.tsx";
@@ -57,8 +58,50 @@ const RecordForm: React.FC<RecordFormProps> = ({
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const validateForm = () => {
+    // Check required fields
+    if (!formData.fullName.trim()) {
+      toast.error("Full name is required");
+      return false;
+    }
+
+    if (!formData.date) {
+      toast.error("Date is required");
+      return false;
+    }
+
+    if (!formData.parentOrNextOfKin.trim()) {
+      const fieldName =
+        formData.recordType === RecordType.BIRTH
+          ? "Parent's Name"
+          : "Next of Kin";
+      toast.error(`${fieldName} is required`);
+      return false;
+    }
+
+    if (!formData.address.trim()) {
+      toast.error("Address is required");
+      return false;
+    }
+
+    // Date validation
+    const selectedDate = new Date(formData.date);
+    const today = new Date();
+    if (selectedDate > today) {
+      toast.error("Date cannot be in the future");
+      return false;
+    }
+
+    return true;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
+
     if (isEditing && initialData) {
       onUpdate({ ...initialData, ...formData });
     } else {
