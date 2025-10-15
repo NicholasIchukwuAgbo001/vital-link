@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../../hooks/useTheme.tsx";
 import { ICONS } from "../../../constants.tsx";
+import MobileMenu from "./MobileMenu.tsx";
 
 const Header = () => {
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
     { name: "Features", path: "/features" },
@@ -15,6 +17,14 @@ const Header = () => {
     { name: "Testimonials", path: "/testimonials" },
     { name: "Contact", path: "/contact" },
   ];
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 py-3 px-4 sm:px-6 lg:px-8 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg border-b border-gray-200 dark:border-gray-800">
@@ -47,8 +57,57 @@ const Header = () => {
             </Link>
           </motion.div>
         </div>
-        <div className="flex items-center space-x-4">
-          <nav className="hidden md:block">
+
+        {/* Mobile menu button */}
+        <div className="md:hidden flex items-center">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={toggleTheme}
+            className="p-2 mr-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+            aria-label="Toggle theme"
+          >
+            {theme === "light" ? (
+              <ICONS.moon className="h-5 w-5" />
+            ) : (
+              <ICONS.sun className="h-5 w-5" />
+            )}
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={toggleMenu}
+            className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+            aria-label="Toggle menu"
+          >
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              {isMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </motion.button>
+        </div>
+
+        <div className="hidden md:flex items-center space-x-4">
+          <nav>
             <ul className="flex space-x-1">
               {navLinks.map((link) => (
                 <li key={link.path}>
@@ -91,6 +150,15 @@ const Header = () => {
           </motion.button>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        <MobileMenu
+          navLinks={navLinks}
+          isMenuOpen={isMenuOpen}
+          closeMenu={closeMenu}
+        />
+      </AnimatePresence>
     </header>
   );
 };

@@ -20,6 +20,7 @@ import HowItWorksPage from "@/src/pages/HowItWorksPage.tsx";
 import BenefitsPage from "@/src/pages/BenefitsPage.tsx";
 import TestimonialsPage from "@/src/pages/TestimonialsPage.tsx";
 import ContactPage from "@/src/pages/ContactPage.tsx";
+import "@/src/styles/globals.css";
 
 function App() {
   return (

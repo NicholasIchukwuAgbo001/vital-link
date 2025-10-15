@@ -1,4 +1,3 @@
-import React from "react";
 import { useAuthModal } from "../contexts/AuthModalContext.tsx";
 import Header from "../components/landing/Header.tsx";
 import HeroSection from "../components/landing/HeroSection.tsx";
