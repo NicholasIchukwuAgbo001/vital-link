@@ -58,7 +58,6 @@ const Header = () => {
           </motion.div>
         </div>
 
-        {/* Mobile menu button */}
         <div className="md:hidden flex items-center">
           <motion.button
             whileHover={{ scale: 1.1 }}
@@ -151,7 +150,6 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         <MobileMenu
           navLinks={navLinks}

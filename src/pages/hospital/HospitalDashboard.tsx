@@ -3,14 +3,10 @@ import { useDataStore } from "../../store/useDataStore.ts";
 import { useAuthStore } from "../../store/useAuthStore.ts";
 import Card from "../../components/ui/Card.tsx";
 import { RecordType } from "../../../types.ts";
-import {
-  PieChart,
-  Pie,
-  Cell,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+import RecordsByMonthChart from "../../components/dashboard/RecordsByMonthChart.tsx";
+import PieChartCard from "../../components/dashboard/PieChartCard.tsx";
+import RecentRecordsList from "../../components/dashboard/RecentRecordsList.tsx";
+import StatCard from "../../components/dashboard/StatCard.tsx";
 
 const HospitalDashboard = () => {
   const { user } = useAuthStore();
@@ -28,11 +24,57 @@ const HospitalDashboard = () => {
     (r) => r.recordType === RecordType.DEATH
   ).length;
 
-  const chartData = [
-    { name: "Births", value: birthRecords },
-    { name: "Deaths", value: deathRecords },
+  const getRecordsByMonth = () => {
+    const months = [];
+    const now = new Date();
+
+    for (let i = 5; i >= 0; i--) {
+      const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
+      const monthName = date.toLocaleString("default", { month: "short" });
+      const year = date.getFullYear();
+
+      const monthRecords = hospitalRecords.filter((record) => {
+        const recordDate = new Date(record.createdAt);
+        return (
+          recordDate.getMonth() === date.getMonth() &&
+          recordDate.getFullYear() === date.getFullYear()
+        );
+      });
+
+      const birthCount = monthRecords.filter(
+        (r) => r.recordType === RecordType.BIRTH
+      ).length;
+      const deathCount = monthRecords.filter(
+        (r) => r.recordType === RecordType.DEATH
+      ).length;
+
+      months.push({
+        name: `${monthName} ${year}`,
+        births: birthCount,
+        deaths: deathCount,
+        total: birthCount + deathCount,
+      });
+    }
+
+    return months;
+  };
+
+  const recordsByMonth = getRecordsByMonth();
+
+  const maleRecords = hospitalRecords.filter((r) => r.gender === "Male").length;
+  const femaleRecords = hospitalRecords.filter(
+    (r) => r.gender === "Female"
+  ).length;
+
+  const genderData = [
+    { name: "Male", value: maleRecords, fill: "#3498db" },
+    { name: "Female", value: femaleRecords, fill: "#e91e63" },
   ];
-  const COLORS = ["#3498db", "#9b59b6"]; // Changed from red (#e74c3c) to purple (#9b59b6)
+
+  const chartData = [
+    { name: "Births", value: birthRecords, fill: "#3498db" },
+    { name: "Deaths", value: deathRecords, fill: "#9b59b6" },
+  ];
 
   return (
     <div className="space-y-6">
@@ -45,63 +87,33 @@ const HospitalDashboard = () => {
         </p>
       </Card>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Card>
-          <h3 className="text-lg font-medium text-gray-500 dark:text-gray-400">
-            Total Records
-          </h3>
-          <p className="text-4xl font-bold text-gray-900 dark:text-white">
-            {hospitalRecords.length}
-          </p>
-        </Card>
-        <Card>
-          <h3 className="text-lg font-medium text-gray-500 dark:text-gray-400">
-            Birth Records
-          </h3>
-          <p className="text-4xl font-bold text-gray-900 dark:text-white">
-            {birthRecords}
-          </p>
-        </Card>
-        <Card>
-          <h3 className="text-lg font-medium text-gray-500 dark:text-gray-400">
-            Death Records
-          </h3>
-          <p className="text-4xl font-bold text-gray-900 dark:text-white">
-            {deathRecords}
-          </p>
-        </Card>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <StatCard title="Total Records" value={hospitalRecords.length} />
+        <StatCard title="Birth Records" value={birthRecords} />
+        <StatCard title="Death Records" value={deathRecords} />
+        <StatCard
+          title="This Month"
+          value={
+            recordsByMonth.length > 0
+              ? recordsByMonth[recordsByMonth.length - 1].total
+              : 0
+          }
+        />
       </div>
 
-      <Card title="Record Distribution">
-        <div style={{ width: "100%", height: 300 }}>
-          <ResponsiveContainer>
-            <PieChart>
-              <Pie
-                data={chartData}
-                cx="50%"
-                cy="50%"
-                labelLine={false}
-                outerRadius={80}
-                fill="#8884d8"
-                dataKey="value"
-                nameKey="name"
-                label={({ name, percent }) =>
-                  `${name} ${((percent as number) * 100).toFixed(0)}%`
-                }
-              >
-                {chartData.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
-      </Card>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <RecordsByMonthChart data={recordsByMonth} />
+        <PieChartCard
+          data={chartData}
+          title="Record Distribution"
+          showLabelLine={false}
+        />
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <PieChartCard data={genderData} title="Gender Distribution" />
+        <RecentRecordsList records={hospitalRecords} />
+      </div>
     </div>
   );
 };

@@ -5,7 +5,6 @@ const NewsletterSignup = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle newsletter signup
     console.log("Subscribed with email:", email);
     setEmail("");
     alert("Thank you for subscribing to our newsletter!");

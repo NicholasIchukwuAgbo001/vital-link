@@ -1,5 +1,4 @@
 :root {
-  /* Light theme colors */
   --background: #f9fafb;
   --foreground: #171717;
   --lightgrey: #e5e7eb;
@@ -17,20 +16,19 @@
 }
 
 .dark {
-  /* Dark theme colors - improved dark theme */
-  --background: #0f172a; /* Deep blue-gray */
-  --foreground: #f1f5f9; /* Light gray */
-  --lightgrey: #334155; /* Medium gray */
-  --primary: #f472b6; /* Lighter pink for better contrast */
-  --primary-100: #ec4899; /* Slightly darker pink */
-  --primary-200: #db2777; /* Even darker pink */
-  --secondary: #a855f7; /* Purple instead of dark red */
-  --secondary-100: #9333ea; /* Darker purple */
-  --text-dark: #f1f5f9; /* Light gray text */
-  --text-muted: #94a3b8; /* Muted blue-gray */
-  --success: #4ade80; /* Lighter green */
-  --error: #f87171; /* Lighter red */
-  --warning: #fbbf24; /* Amber */
+  --background: #0f172a; 
+  --foreground: #f1f5f9;
+  --lightgrey: #334155; 
+  --primary: #f472b6; 
+  --primary-100: #ec4899; 
+  --primary-200: #db2777;
+  --secondary: #a855f7; 
+  --secondary-100: #9333ea; 
+  --text-dark: #f1f5f9; 
+  --text-muted: #94a3b8; 
+  --success: #4ade80; 
+  --error: #f87171; 
+  --warning: #fbbf24; 
   --white: #ffffff;
 }
 
@@ -39,5 +37,5 @@ body {
   color: var(--text-dark);
   font-family: "DM Sans", sans-serif;
   overflow-x: hidden;
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme changes */
+  transition: background-color 0.3s, color 0.3s; 
 }

@@ -23,7 +23,6 @@ const HospitalLayout: React.FC = () => {
 
   return (
     <div className="flex h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-      {/* Mobile header */}
       <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 z-20 flex items-center justify-between px-4">
         <div className="flex items-center">
           <ICONS.logo className="h-8 w-8 text-primary" />
@@ -52,7 +51,6 @@ const HospitalLayout: React.FC = () => {
         </button>
       </div>
 
-      {/* Pass the sidebar state and toggle function to ResponsiveSidebar */}
       <ResponsiveSidebar
         navItems={hospitalNavItems}
         isSidebarOpen={isSidebarOpen}

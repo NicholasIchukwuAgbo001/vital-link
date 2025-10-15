@@ -4,6 +4,8 @@ import { useAuthStore } from "../store/useAuthStore.ts";
 import Input from "./ui/Input.tsx";
 import Button from "./ui/Button.tsx";
 import Spinner from "./ui/Spinner.tsx";
+import Form from "./ui/Form.tsx";
+import FormField from "./ui/FormField.tsx";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -24,20 +26,17 @@ const LoginModal: React.FC<LoginModalProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Basic validation
     if (!email || !password) {
       toast.error("Please fill in all required fields");
       return;
     }
 
-    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       toast.error("Please enter a valid email address");
       return;
     }
 
-    // Password validation
     if (password.length < 6) {
       toast.error("Password must be at least 6 characters long");
       return;
@@ -84,10 +83,9 @@ const LoginModal: React.FC<LoginModalProps> = ({
                   VitalLink Login
                 </h3>
                 <div className="mt-2">
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="text-left">
+                  <Form onSubmit={handleSubmit}>
+                    <FormField label="Email" id="email" required>
                       <Input
-                        label="Email"
                         id="email"
                         type="email"
                         value={email}
@@ -95,10 +93,9 @@ const LoginModal: React.FC<LoginModalProps> = ({
                         required
                         autoComplete="email"
                       />
-                    </div>
-                    <div className="text-left">
+                    </FormField>
+                    <FormField label="Password" id="password" required>
                       <Input
-                        label="Password"
                         id="password"
                         type="password"
                         value={password}
@@ -106,13 +103,13 @@ const LoginModal: React.FC<LoginModalProps> = ({
                         required
                         autoComplete="current-password"
                       />
-                    </div>
+                    </FormField>
                     <div className="flex items-center justify-between">
                       <Button type="submit" disabled={loading} fullWidth>
                         {loading ? <Spinner /> : "Log In"}
                       </Button>
                     </div>
-                  </form>
+                  </Form>
                 </div>
               </div>
             </div>

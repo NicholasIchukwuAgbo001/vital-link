@@ -3,6 +3,8 @@ import toast from "react-hot-toast";
 import { Hospital } from "../../types.ts";
 import Input from "./ui/Input.tsx";
 import Button from "./ui/Button.tsx";
+import Form from "./ui/Form.tsx";
+import FormField from "./ui/FormField.tsx";
 
 interface HospitalFormProps {
   onSubmit: (hospital: Omit<Hospital, "id">) => void;
@@ -126,58 +128,74 @@ const HospitalForm: React.FC<HospitalFormProps> = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <Input
-        label="Hospital Name"
-        name="name"
-        value={hospital.name}
-        onChange={handleChange}
-        required
-      />
-      <Input
-        label="Email"
-        name="email"
-        type="email"
-        value={hospital.email}
-        onChange={handleChange}
-        required
-        disabled={isEditing || isApproval}
-      />
-      <Input
-        label="Location"
-        name="location"
-        value={hospital.location}
-        onChange={handleChange}
-        required
-      />
-      <Input
-        label="Phone"
-        name="phone"
-        type="tel"
-        value={hospital.phone}
-        onChange={handleChange}
-        required
-      />
-      <Input
-        label="License Number"
-        name="license"
-        value={hospital.license}
-        onChange={handleChange}
-        required
-      />
-      <Input
+    <Form onSubmit={handleSubmit}>
+      <FormField label="Hospital Name" id="name" required>
+        <Input
+          id="name"
+          name="name"
+          value={hospital.name}
+          onChange={handleChange}
+          required
+        />
+      </FormField>
+      <FormField label="Email" id="email" required>
+        <Input
+          id="email"
+          name="email"
+          type="email"
+          value={hospital.email}
+          onChange={handleChange}
+          required
+          disabled={isEditing || isApproval}
+        />
+      </FormField>
+      <FormField label="Location" id="location" required>
+        <Input
+          id="location"
+          name="location"
+          value={hospital.location}
+          onChange={handleChange}
+          required
+        />
+      </FormField>
+      <FormField label="Phone" id="phone" required>
+        <Input
+          id="phone"
+          name="phone"
+          type="tel"
+          value={hospital.phone}
+          onChange={handleChange}
+          required
+        />
+      </FormField>
+      <FormField label="License Number" id="license" required>
+        <Input
+          id="license"
+          name="license"
+          value={hospital.license}
+          onChange={handleChange}
+          required
+        />
+      </FormField>
+      <FormField
         label="Password"
-        name="password"
-        type="password"
-        value={hospital.password}
-        onChange={handleChange}
+        id="password"
         required={isApproval || !isEditing}
-        placeholder={
-          isEditing || isApproval
-            ? "Leave blank to keep current password"
-            : "Required for hospital login"
-        }
-      />
+      >
+        <Input
+          id="password"
+          name="password"
+          type="password"
+          value={hospital.password}
+          onChange={handleChange}
+          required={isApproval || !isEditing}
+          placeholder={
+            isEditing || isApproval
+              ? "Leave blank to keep current password"
+              : "Required for hospital login"
+          }
+        />
+      </FormField>
       <Button type="submit" fullWidth>
         {isApproval
           ? "Approve Hospital"
@@ -185,7 +203,7 @@ const HospitalForm: React.FC<HospitalFormProps> = ({
           ? "Update Hospital"
           : "Create Hospital"}
       </Button>
-    </form>
+    </Form>
   );
 };
 

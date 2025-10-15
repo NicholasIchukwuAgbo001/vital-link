@@ -4,6 +4,8 @@ import { RecordData, RecordType } from "../../types.ts";
 import Input from "./ui/Input.tsx";
 import Select from "./ui/Select.tsx";
 import Button from "./ui/Button.tsx";
+import Form from "./ui/Form.tsx";
+import FormField from "./ui/FormField.tsx";
 
 interface RecordFormProps {
   onSubmit: (
@@ -59,7 +61,6 @@ const RecordForm: React.FC<RecordFormProps> = ({
   };
 
   const validateForm = () => {
-    // Check required fields
     if (!formData.fullName.trim()) {
       toast.error("Full name is required");
       return false;
@@ -84,7 +85,6 @@ const RecordForm: React.FC<RecordFormProps> = ({
       return false;
     }
 
-    // Date validation
     const selectedDate = new Date(formData.date);
     const today = new Date();
     if (selectedDate > today) {
@@ -110,68 +110,90 @@ const RecordForm: React.FC<RecordFormProps> = ({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <Select
-        label="Record Type"
-        name="recordType"
-        value={formData.recordType}
-        onChange={handleChange}
-        required
-      >
-        <option value={RecordType.BIRTH}>Birth</option>
-        <option value={RecordType.DEATH}>Death</option>
-      </Select>
-      <Input
-        label="Full Name"
-        name="fullName"
-        value={formData.fullName}
-        onChange={handleChange}
-        required
-      />
-      <Input
+    <Form onSubmit={handleSubmit}>
+      <FormField label="Record Type" id="recordType" required>
+        <Select
+          id="recordType"
+          name="recordType"
+          value={formData.recordType}
+          onChange={handleChange}
+          required
+          label=""
+        >
+          <option value={RecordType.BIRTH}>Birth</option>
+          <option value={RecordType.DEATH}>Death</option>
+        </Select>
+      </FormField>
+      <FormField label="Full Name" id="fullName" required>
+        <Input
+          id="fullName"
+          name="fullName"
+          value={formData.fullName}
+          onChange={handleChange}
+          required
+        />
+      </FormField>
+      <FormField
         label={
           formData.recordType === RecordType.BIRTH
             ? "Date of Birth"
             : "Date of Death"
         }
-        name="date"
-        type="date"
-        value={formData.date}
-        onChange={handleChange}
-        required
-      />
-      <Select
-        label="Gender"
-        name="gender"
-        value={formData.gender}
-        onChange={handleChange}
+        id="date"
         required
       >
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-      </Select>
-      <Input
+        <Input
+          id="date"
+          name="date"
+          type="date"
+          value={formData.date}
+          onChange={handleChange}
+          required
+        />
+      </FormField>
+      <FormField label="Gender" id="gender" required>
+        <Select
+          id="gender"
+          name="gender"
+          value={formData.gender}
+          onChange={handleChange}
+          required
+          label=""
+        >
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </Select>
+      </FormField>
+      <FormField
         label={
           formData.recordType === RecordType.BIRTH
             ? "Parent's Name"
             : "Next of Kin"
         }
-        name="parentOrNextOfKin"
-        value={formData.parentOrNextOfKin}
-        onChange={handleChange}
+        id="parentOrNextOfKin"
         required
-      />
-      <Input
-        label="Address"
-        name="address"
-        value={formData.address}
-        onChange={handleChange}
-        required
-      />
+      >
+        <Input
+          id="parentOrNextOfKin"
+          name="parentOrNextOfKin"
+          value={formData.parentOrNextOfKin}
+          onChange={handleChange}
+          required
+        />
+      </FormField>
+      <FormField label="Address" id="address" required>
+        <Input
+          id="address"
+          name="address"
+          value={formData.address}
+          onChange={handleChange}
+          required
+        />
+      </FormField>
       <Button type="submit" fullWidth>
         {isEditing ? "Update Record" : "Register Record"}
       </Button>
-    </form>
+    </Form>
   );
 };
 

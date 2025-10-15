@@ -35,7 +35,6 @@ const ResponsiveSidebar: React.FC<ResponsiveSidebarProps> = ({
 
   return (
     <>
-      {/* Mobile sidebar overlay */}
       {isSidebarOpen && (
         <div
           className="md:hidden fixed inset-0 bg-black bg-opacity-50 z-30"
@@ -43,13 +42,11 @@ const ResponsiveSidebar: React.FC<ResponsiveSidebarProps> = ({
         />
       )}
 
-      {/* Sidebar */}
       <div
         className={`fixed md:relative z-40 md:z-0 h-full bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col transition-transform duration-300 ease-in-out md:translate-x-0 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } md:w-64 w-64 pt-16 md:pt-0`}
       >
-        {/* Header with logo and close button for mobile */}
         <div className="h-16 flex items-center justify-between px-4 border-b border-gray-200 dark:border-gray-700 md:hidden">
           <div className="flex items-center">
             <ICONS.logo className="h-8 w-8 text-primary" />
@@ -78,7 +75,6 @@ const ResponsiveSidebar: React.FC<ResponsiveSidebarProps> = ({
           </button>
         </div>
 
-        {/* Regular header for desktop */}
         <div className="h-16 flex items-center px-6 border-b border-gray-200 dark:border-gray-700 hidden md:flex">
           <ICONS.logo className="h-8 w-8 text-primary" />
           <span className="ml-3 text-xl font-bold text-gray-800 dark:text-white">
