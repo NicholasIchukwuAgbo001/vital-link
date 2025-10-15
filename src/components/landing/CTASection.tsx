@@ -52,9 +52,6 @@ const CTASection: React.FC<CTASectionProps> = ({ onAccessPortal }) => {
           >
             Access Portal
           </button>
-          <button className="px-8 py-4 bg-transparent text-white border-2 border-white font-semibold rounded-lg shadow-lg hover:bg-white/10 transition-all">
-            Contact Sales
-          </button>
         </div>
       </div>
     </section>
