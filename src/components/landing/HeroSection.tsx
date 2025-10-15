@@ -54,7 +54,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onAccessPortal }) => {
           <div className="max-w-3xl mx-auto mb-8">
             <HeroStats stats={stats} />
 
-            {/* Side by side cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               <HeroChallenge />
               <RotatingStats />

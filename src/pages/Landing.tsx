@@ -8,8 +8,7 @@ import Footer from "../components/landing/Footer.tsx";
 
 const Landing = () => {
   const { openLoginModal } = useAuthModal();
-
-  // Animation variants
+  
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
