@@ -1,25 +1,25 @@
 import React from "react";
 import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import { ThemeProvider } from "./hooks/useTheme";
-import { AuthModalProvider } from "./contexts/AuthModalContext";
-import Landing from "./pages/Landing";
-import VerificationPage from "./pages/VerificationPage";
-import AdminLayout from "./components/layout/AdminLayout";
-import HospitalLayout from "./components/layout/HospitalLayout";
-import ProtectedRoute from "./components/ProtectedRoute";
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import ManageHospitals from "./pages/admin/ManageHospitals";
-import AdminRecords from "./pages/admin/AdminRecords";
-import HospitalDashboard from "./pages/hospital/HospitalDashboard";
-import ManageRecords from "./pages/hospital/ManageRecords";
-import { UserRole } from "./types";
+import { ThemeProvider } from "@/src/hooks/useTheme.tsx";
+import { AuthModalProvider } from "@/src/contexts/AuthModalContext.tsx";
+import Landing from "@/src/pages/Landing.tsx";
+import VerificationPage from "@/src/pages/VerificationPage.tsx";
+import AdminLayout from "@/src/components/layout/AdminLayout.tsx";
+import HospitalLayout from "@/src/components/layout/HospitalLayout.tsx";
+import ProtectedRoute from "@/src/components/ProtectedRoute.tsx";
+import AdminDashboard from "@/src/pages/admin/AdminDashboard.tsx";
+import ManageHospitals from "@/src/pages/admin/ManageHospitals.tsx";
+import AdminRecords from "@/src/pages/admin/AdminRecords.tsx";
+import HospitalDashboard from "@/src/pages/hospital/HospitalDashboard.tsx";
+import ManageRecords from "@/src/pages/hospital/ManageRecords.tsx";
+import { UserRole } from "@/types.ts";
 
-import FeaturesPage from "./pages/FeaturesPage";
-import HowItWorksPage from "./pages/HowItWorksPage";
-import BenefitsPage from "./pages/BenefitsPage";
-import TestimonialsPage from "./pages/TestimonialsPage";
-import ContactPage from "./pages/ContactPage";
+import FeaturesPage from "@/src/pages/FeaturesPage.tsx";
+import HowItWorksPage from "@/src/pages/HowItWorksPage.tsx";
+import BenefitsPage from "@/src/pages/BenefitsPage.tsx";
+import TestimonialsPage from "@/src/pages/TestimonialsPage.tsx";
+import ContactPage from "@/src/pages/ContactPage.tsx";
 
 function App() {
   return (
