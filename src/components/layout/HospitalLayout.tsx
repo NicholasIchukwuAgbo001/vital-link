@@ -6,6 +6,7 @@ import { ICONS } from "../../../constants.tsx";
 const hospitalNavItems = [
   { path: "/hospital/dashboard", label: "Dashboard", icon: ICONS.dashboard },
   { path: "/hospital/records", label: "Records", icon: ICONS.records },
+  { path: "/hospital/profile", label: "Profile", icon: ICONS.hospitals },
 ];
 
 const HospitalLayout: React.FC = () => {

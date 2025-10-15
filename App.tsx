@@ -13,6 +13,7 @@ import ManageHospitals from "@/src/pages/admin/ManageHospitals.tsx";
 import AdminRecords from "@/src/pages/admin/AdminRecords.tsx";
 import HospitalDashboard from "@/src/pages/hospital/HospitalDashboard.tsx";
 import ManageRecords from "@/src/pages/hospital/ManageRecords.tsx";
+import HospitalProfile from "@/src/pages/hospital/HospitalProfile.tsx";
 import { UserRole } from "@/types.ts";
 
 import FeaturesPage from "@/src/pages/FeaturesPage.tsx";
@@ -20,7 +21,6 @@ import HowItWorksPage from "@/src/pages/HowItWorksPage.tsx";
 import BenefitsPage from "@/src/pages/BenefitsPage.tsx";
 import TestimonialsPage from "@/src/pages/TestimonialsPage.tsx";
 import ContactPage from "@/src/pages/ContactPage.tsx";
-import "@/src/styles/globals.css";
 
 function App() {
   return (
@@ -64,6 +64,7 @@ function App() {
             >
               <Route path="dashboard" element={<HospitalDashboard />} />
               <Route path="records" element={<ManageRecords />} />
+              <Route path="profile" element={<HospitalProfile />} />
               <Route index element={<Navigate to="dashboard" replace />} />
             </Route>
 

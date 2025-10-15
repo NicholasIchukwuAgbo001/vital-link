@@ -43,6 +43,9 @@ const HospitalTable: React.FC<HospitalTableProps> = ({
                   Phone
                 </th>
                 <th scope="col" className="px-6 py-3">
+                  License
+                </th>
+                <th scope="col" className="px-6 py-3">
                   Actions
                 </th>
               </tr>
@@ -59,6 +62,7 @@ const HospitalTable: React.FC<HospitalTableProps> = ({
                   <td className="px-6 py-4">{hospital.email}</td>
                   <td className="px-6 py-4">{hospital.location}</td>
                   <td className="px-6 py-4">{hospital.phone}</td>
+                  <td className="px-6 py-4">{hospital.license}</td>
                   <td className="px-6 py-4 flex space-x-2">
                     {onApprove && (
                       <Button
@@ -87,7 +91,7 @@ const HospitalTable: React.FC<HospitalTableProps> = ({
               ))}
               {isEmpty && (
                 <tr>
-                  <td colSpan={5} className="text-center py-4">
+                  <td colSpan={6} className="text-center py-4">
                     {emptyMessage}
                   </td>
                 </tr>

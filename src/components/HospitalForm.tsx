@@ -24,18 +24,27 @@ const HospitalForm: React.FC<HospitalFormProps> = ({
     email: "",
     location: "",
     phone: "",
+    license: "",
     password: "",
   });
 
   useEffect(() => {
     if (isEditing && initialData) {
-      setHospital({ ...initialData, password: initialData.password || "" });
+      setHospital({
+        name: initialData.name,
+        email: initialData.email,
+        location: initialData.location,
+        phone: initialData.phone,
+        license: initialData.license,
+        password: initialData.password || "",
+      });
     } else {
       setHospital({
         name: "",
         email: "",
         location: "",
         phone: "",
+        license: "",
         password: "",
       });
     }
@@ -47,7 +56,6 @@ const HospitalForm: React.FC<HospitalFormProps> = ({
   };
 
   const validateForm = () => {
-    // Check required fields
     if (!hospital.name.trim()) {
       toast.error("Hospital name is required");
       return false;
@@ -63,7 +71,11 @@ const HospitalForm: React.FC<HospitalFormProps> = ({
       return false;
     }
 
-    // Email validation
+    if (!hospital.license.trim()) {
+      toast.error("License number is required");
+      return false;
+    }
+
     if (!hospital.email.trim()) {
       toast.error("Email is required");
       return false;
@@ -75,14 +87,12 @@ const HospitalForm: React.FC<HospitalFormProps> = ({
       return false;
     }
 
-    // Phone validation (simple validation)
     const phoneRegex = /^[0-9+\-\s()]+$/;
     if (!phoneRegex.test(hospital.phone)) {
       toast.error("Please enter a valid phone number");
       return false;
     }
 
-    // Password validation
     if (isApproval && !hospital.password) {
       toast.error("Password is required for approval");
       return false;
@@ -145,6 +155,13 @@ const HospitalForm: React.FC<HospitalFormProps> = ({
         name="phone"
         type="tel"
         value={hospital.phone}
+        onChange={handleChange}
+        required
+      />
+      <Input
+        label="License Number"
+        name="license"
+        value={hospital.license}
         onChange={handleChange}
         required
       />

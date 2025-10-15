@@ -32,7 +32,7 @@ const HospitalDashboard = () => {
     { name: "Births", value: birthRecords },
     { name: "Deaths", value: deathRecords },
   ];
-  const COLORS = ["#3498db", "#e74c3c"];
+  const COLORS = ["#3498db", "#9b59b6"]; // Changed from red (#e74c3c) to purple (#9b59b6)
 
   return (
     <div className="space-y-6">
@@ -86,7 +86,7 @@ const HospitalDashboard = () => {
                 dataKey="value"
                 nameKey="name"
                 label={({ name, percent }) =>
-                  `${name} ${(percent * 100).toFixed(0)}%`
+                  `${name} ${((percent as number) * 100).toFixed(0)}%`
                 }
               >
                 {chartData.map((entry, index) => (

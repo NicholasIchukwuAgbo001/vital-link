@@ -11,12 +11,7 @@ import RecordsTable from "../../components/records/RecordsTable";
 
 const ManageRecords = () => {
   const { user } = useAuthStore();
-  const {
-    records: allRecords,
-    addRecord,
-    updateRecord,
-    deleteRecord,
-  } = useDataStore();
+  const { records: allRecords, addRecord } = useDataStore();
 
   const hospitalRecords = allRecords
     .filter((r) => r.hospitalId === user?.hospitalId)
@@ -27,16 +22,9 @@ const ManageRecords = () => {
 
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
   const [isQRModalOpen, setIsQRModalOpen] = useState(false);
-  const [editingRecord, setEditingRecord] = useState<RecordData | null>(null);
   const [selectedCertId, setSelectedCertId] = useState<string>("");
 
   const openModalForCreate = () => {
-    setEditingRecord(null);
-    setIsFormModalOpen(true);
-  };
-
-  const openModalForEdit = (record: RecordData) => {
-    setEditingRecord(record);
     setIsFormModalOpen(true);
   };
 
@@ -61,16 +49,7 @@ const ManageRecords = () => {
   };
 
   const handleUpdateSubmit = (recordData: RecordData) => {
-    updateRecord(recordData);
-    toast.success("Record updated successfully!");
-    setIsFormModalOpen(false);
-  };
-
-  const handleDelete = (recordId: string) => {
-    if (window.confirm("Are you sure you want to delete this record?")) {
-      deleteRecord(recordId);
-      toast.success("Record deleted successfully.");
-    }
+    console.log("Update called but not implemented", recordData);
   };
 
   return (
@@ -93,13 +72,13 @@ const ManageRecords = () => {
       <Modal
         isOpen={isFormModalOpen}
         onClose={() => setIsFormModalOpen(false)}
-        title={editingRecord ? "Edit Record" : "Register New Record"}
+        title="Register New Record"
       >
         <RecordForm
           onSubmit={handleCreateSubmit}
           onUpdate={handleUpdateSubmit}
-          initialData={editingRecord}
-          isEditing={!!editingRecord}
+          initialData={null}
+          isEditing={false}
         />
       </Modal>
 

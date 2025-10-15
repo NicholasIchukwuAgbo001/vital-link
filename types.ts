@@ -16,6 +16,7 @@ export interface Hospital {
   email: string;
   location: string;
   phone: string;
+  license: string;
   password?: string;
 }
 
