@@ -16,19 +16,19 @@
 }
 
 .dark {
-  --background: #0f172a; 
+  --background: #0f172a;
   --foreground: #f1f5f9;
-  --lightgrey: #334155; 
-  --primary: #f472b6; 
-  --primary-100: #ec4899; 
+  --lightgrey: #334155;
+  --primary: #f472b6;
+  --primary-100: #ec4899;
   --primary-200: #db2777;
-  --secondary: #a855f7; 
-  --secondary-100: #9333ea; 
-  --text-dark: #f1f5f9; 
-  --text-muted: #94a3b8; 
-  --success: #4ade80; 
-  --error: #f87171; 
-  --warning: #fbbf24; 
+  --secondary: #a855f7;
+  --secondary-100: #9333ea;
+  --text-dark: #f1f5f9;
+  --text-muted: #94a3b8;
+  --success: #4ade80;
+  --error: #f87171;
+  --warning: #fbbf24;
   --white: #ffffff;
 }
 
@@ -37,5 +37,21 @@ body {
   color: var(--text-dark);
   font-family: "DM Sans", sans-serif;
   overflow-x: hidden;
-  transition: background-color 0.3s, color 0.3s; 
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Infinite scrolling animation for trusted companies */
+@keyframes loop-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-loop-scroll {
+  display: flex;
+  width: max-content;
+  animation: loop-scroll 20s linear infinite;
 }

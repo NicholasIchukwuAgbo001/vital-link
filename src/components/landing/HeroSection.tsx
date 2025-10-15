@@ -1,5 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import HeroStats from "./HeroStats.tsx";
+import HeroChallenge from "./HeroChallenge.tsx";
+import RotatingStats from "./RotatingStats.tsx";
 
 interface HeroSectionProps {
   onAccessPortal: () => void;
@@ -7,6 +10,24 @@ interface HeroSectionProps {
 
 const HeroSection: React.FC<HeroSectionProps> = ({ onAccessPortal }) => {
   const navigate = useNavigate();
+
+  const stats = [
+    {
+      value: "24/7",
+      label: "Access to records anytime, anywhere",
+      color: "text-primary",
+    },
+    {
+      value: "500+",
+      label: "Hospitals using our platform",
+      color: "text-green-600",
+    },
+    {
+      value: "99.9%",
+      label: "Uptime reliability guarantee",
+      color: "text-purple-600",
+    },
+  ];
 
   const handleContactClick = () => {
     navigate("/contact");
@@ -31,33 +52,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onAccessPortal }) => {
             documentation process while ensuring data integrity and compliance.
           </p>
           <div className="max-w-3xl mx-auto mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
-                <div className="text-2xl font-bold text-primary">60%</div>
-                <div className="text-sm text-gray-600 dark:text-gray-300">
-                  Births unregistered annually in Nigeria
-                </div>
-              </div>
-              <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
-                <div className="text-2xl font-bold text-green-600">85%</div>
-                <div className="text-sm text-gray-600 dark:text-gray-300">
-                  Reduction in documentation errors
-                </div>
-              </div>
-              <div className="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg">
-                <div className="text-2xl font-bold text-purple-600">90%</div>
-                <div className="text-sm text-gray-600 dark:text-gray-300">
-                  Faster processing time with digital system
-                </div>
-              </div>
-            </div>
-            <div className="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-500 p-4 rounded-r-lg">
-              <p className="text-yellow-700 dark:text-yellow-300 font-medium">
-                Nigeria faces critical challenges with vital records management.
-                With over 60% of births and deaths going unregistered annually,
-                it impacts healthcare planning, resource allocation, and legal
-                documentation.
-              </p>
+            <HeroStats stats={stats} />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <HeroChallenge />
+              <RotatingStats />
             </div>
           </div>
           <div className="flex flex-col sm:flex-row justify-center gap-4">

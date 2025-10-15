@@ -2,6 +2,7 @@ import { useAuthModal } from "../contexts/AuthModalContext.tsx";
 import Header from "../components/landing/Header.tsx";
 import HeroSection from "../components/landing/HeroSection.tsx";
 import CTASection from "../components/landing/CTASection.tsx";
+import TrustedCompanies from "../components/landing/TrustedCompanies.tsx";
 import Footer from "../components/landing/Footer.tsx";
 
 const Landing = () => {
@@ -13,6 +14,7 @@ const Landing = () => {
         <Header />
         <HeroSection onAccessPortal={openLoginModal} />
         <CTASection onAccessPortal={openLoginModal} />
+        <TrustedCompanies />
         <Footer />
       </div>
     </div>
