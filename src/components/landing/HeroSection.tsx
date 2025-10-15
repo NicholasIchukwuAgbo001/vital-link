@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import ThreeBackground from "./ThreeBackground.tsx";
 
 interface HeroSectionProps {
@@ -6,8 +7,14 @@ interface HeroSectionProps {
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({ onAccessPortal }) => {
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate("/contact");
+  };
+
   return (
-    <section className="h-screen flex items-center py-9 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section className="flex items-center py-5 px-4 sm:px-6 lg:px-8 relative z-0 sm:mt-0">
       <ThreeBackground />
       <div className="max-w-7xl mx-auto w-full relative z-10">
         <div className="text-center">
@@ -57,8 +64,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onAccessPortal }) => {
             >
               Access Portal
             </button>
-            <button className="px-8 py-4 bg-white dark:bg-gray-800 text-primary dark:text-white border-2 border-primary font-semibold rounded-lg shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all">
-              Learn More
+            <button
+              onClick={handleContactClick}
+              className="px-8 py-4 bg-white dark:bg-gray-800 text-primary dark:text-white border-2 border-primary font-semibold rounded-lg shadow-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all transform hover:scale-105"
+            >
+              Contact Us
             </button>
           </div>
         </div>

@@ -12,7 +12,7 @@ const Landing = () => {
   return (
     <div className="min-h-screen relative overflow-hidden bg-background text-text-dark dark:bg-gray-900 dark:text-white pt-24">
       <ThreeBackground />
-      <div className="relative z-10">
+      <div className="relative z-0">
         <Header />
         <HeroSection onAccessPortal={openLoginModal} />
         <CTASection onAccessPortal={openLoginModal} />
