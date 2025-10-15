@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import ResponsiveSidebar from "./ResponsiveSidebar.tsx";
-import { ICONS } from "../../../constants.tsx";
+import { ICONS } from "../constants.tsx";
 
 const adminNavItems = [
   { path: "/admin/dashboard", label: "Dashboard", icon: ICONS.dashboard },

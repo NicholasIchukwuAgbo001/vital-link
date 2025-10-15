@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ICONS } from "../../../constants.tsx";
+import { ICONS } from "../constants.tsx";
 import SocialLinks from "./SocialLinks.tsx";
 
 const Footer = () => {

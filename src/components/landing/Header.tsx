@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../../hooks/useTheme.tsx";
-import { ICONS } from "../../../constants.tsx";
+import { ICONS } from "../constants.tsx";
 import MobileMenu from "./MobileMenu.tsx";
 
 const Header = () => {

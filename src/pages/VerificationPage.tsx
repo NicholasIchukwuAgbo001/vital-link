@@ -2,7 +2,7 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDataStore } from "../store/useDataStore.ts";
 import Card from "../components/ui/Card.tsx";
-import { ICONS } from "../../constants.tsx";
+import { ICONS } from "../components/constants.tsx";
 
 const VerificationPage = () => {
   const { certificateId } = useParams<{ certificateId: string }>();

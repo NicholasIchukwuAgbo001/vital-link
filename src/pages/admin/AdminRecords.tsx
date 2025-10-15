@@ -4,7 +4,7 @@ import { RecordType } from "../../../types.ts";
 import Card from "../../components/ui/Card.tsx";
 import Input from "../../components/ui/Input.tsx";
 import Select from "../../components/ui/Select.tsx";
-import { ICONS } from "../../../constants.tsx";
+import { ICONS } from "../../components/constants.tsx";
 import RecordsTable from "../../components/records/RecordsTable.tsx";
 
 const AdminRecords = () => {

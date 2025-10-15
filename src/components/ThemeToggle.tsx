@@ -1,6 +1,6 @@
 import React from "react";
 import { useTheme } from "../hooks/useTheme.tsx";
-import { ICONS } from "../../constants.tsx";
+import { ICONS } from "./constants.tsx";
 import Button from "./ui/Button.tsx";
 
 const ThemeToggle = () => {

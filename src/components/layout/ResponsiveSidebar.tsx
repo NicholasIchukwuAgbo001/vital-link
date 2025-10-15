@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { ICONS } from "../../../constants.tsx";
+import { ICONS } from "../constants.tsx";
 import ThemeToggle from "../ThemeToggle.tsx";
 import { useAuthStore } from "../../store/useAuthStore.ts";
 

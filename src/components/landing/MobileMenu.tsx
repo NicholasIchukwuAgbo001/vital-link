@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ICONS } from "../../../constants.tsx";
+import { ICONS } from "../constants.tsx";
 
 interface MobileMenuProps {
   navLinks: { name: string; path: string }[];
