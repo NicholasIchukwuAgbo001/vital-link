@@ -6,19 +6,22 @@ const RotatingStats = () => {
       id: 1,
       stat: "60%",
       description: "Births unregistered annually in Nigeria",
-      color: "text-primary",
+      color: "text-white",
+      bgColor: "bg-green-600",
     },
     {
       id: 2,
       stat: "70%",
       description: "Reduction in processing time with digital system",
       color: "text-green-600",
+      bgColor: "bg-white",
     },
     {
       id: 3,
       stat: "100%",
       description: "Data security and compliance guarantee",
-      color: "text-purple-600",
+      color: "text-white",
+      bgColor: "bg-green-600",
     },
   ];
 
@@ -33,14 +36,16 @@ const RotatingStats = () => {
   }, []);
 
   return (
-    <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg transition-opacity duration-500 h-full flex items-center">
+    <div
+      className={`backdrop-blur-sm p-6 rounded-lg transition-opacity duration-500 h-full flex items-center ${rotatingContent[currentIndex].bgColor}`}
+    >
       <div className="text-center w-full">
         <div
           className={`text-4xl font-bold ${rotatingContent[currentIndex].color} mb-2`}
         >
           {rotatingContent[currentIndex].stat}
         </div>
-        <div className="text-white text-lg">
+        <div className={`${rotatingContent[currentIndex].color} text-lg`}>
           {rotatingContent[currentIndex].description}
         </div>
       </div>
