@@ -113,7 +113,7 @@ const Footer = () => {
             records management for healthcare institutions worldwide.
           </p>
           <p className="text-sm">
-            Designed and built with ❤️ for healthcare professionals
+            Designed and built by(NICHOLAS & BODE) for healthcare professionals
           </p>
         </div>
       </div>

@@ -39,9 +39,9 @@ const CTASection: React.FC<CTASectionProps> = ({ onAccessPortal }) => {
           </div>
           <div className="bg-white/20 backdrop-blur-sm p-4 rounded-lg mb-6">
             <p className="text-white font-medium">
-              "VitalLink has helped us reduce documentation errors by 85% and
-              cut processing time from days to minutes. A game-changer for
-              Nigerian healthcare." - Lagos State Hospital Administrator
+              VitalLink has helped us reduce documentation errors by 85% and
+              cut processing time from days to minutes. A game changer for
+              Nigerian healthcare. Lagos State Hospital Administrator.
             </p>
           </div>
         </div>

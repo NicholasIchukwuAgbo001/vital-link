@@ -35,7 +35,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onAccessPortal }) => {
 
   return (
     <section
-      className="flex items-center justify-center min-h-screen py-5 px-4 sm:px-6 lg:px-8 relative z-0 mt-0 pt-20"
+      className="flex items-center justify-center min-h-screen py-8 px-4 sm:px-6 lg:px-8 relative z-0 mt-0 pt-20"
       style={{ backgroundImage: "url('/hero-img.jpg')" }}
     >
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
@@ -47,7 +47,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onAccessPortal }) => {
             <span className="text-primary">Life Events</span>
           </h1>
           <p className="text-xl text-white max-w-3xl mx-auto mb-6">
-            VitalLink provides a secure, efficient, and tamper-proof system for
+            VitalLink provides a secure, efficient, and tamper proof system for
             registering birth and death certificates. Streamline your hospital's
             documentation process while ensuring data integrity and compliance.
           </p>
