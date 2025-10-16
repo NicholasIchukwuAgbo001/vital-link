@@ -44,7 +44,6 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Infinite scrolling animation for trusted companies */
 @keyframes loop-scroll {
   0% {
     transform: translateX(0);

@@ -28,7 +28,7 @@ const ContactInfo = () => {
             <h3 className="text-lg font-medium text-gray-900 dark:text-white">
               Phone
             </h3>
-            <p className="text-gray-600 dark:text-gray-400">+234u7058705863</p>
+            <p className="text-gray-600 dark:text-gray-400">+2347058705863</p>
           </div>
         </div>
         <div className="flex items-start">
@@ -87,7 +87,7 @@ const ContactInfo = () => {
             <p className="text-gray-600 dark:text-gray-400">
               123 Healthcare Blvd
               <br />
-              Medical District, MD 20001
+              Medical District, Sabo Yabo, Lagos State.NG
             </p>
           </div>
         </div>
